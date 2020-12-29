@@ -7,6 +7,7 @@ import colors from "../config/colors";
 
 export default function ListItem({
   image,
+  IconComponent,
   title,
   subtitle,
   onPress,
@@ -16,10 +17,13 @@ export default function ListItem({
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
         <View style={styles.container}>
-          <Image style={styles.image} source={image}></Image>
-          <View>
+          {IconComponent}
+          {image && <Image style={styles.image} source={image}></Image>}
+          <View style={styles.detailsContainer}>
             <AppText otherStyles={styles.title}>{title}</AppText>
-            <AppText otherStyles={styles.subtitle}>{subtitle}</AppText>
+            {subtitle && (
+              <AppText otherStyles={styles.subtitle}>{subtitle}</AppText>
+            )}
           </View>
         </View>
       </TouchableHighlight>
@@ -31,12 +35,16 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     padding: 15,
+    backgroundColor: colors.white,
   },
   image: {
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 10,
+  },
+  detailsContainer: {
+    marginLeft: 10,
+    justifyContent: "center",
   },
   title: {
     fontWeight: "500",

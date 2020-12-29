@@ -52,9 +52,9 @@ export default function MessagesScreen() {
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDeleteMsg(item)} />
             )}
-            ItemSeparatorComponent={ListItemSeperator}
           />
         )}
+        ItemSeparatorComponent={ListItemSeperator}
         refreshing={refreshing}
         onRefresh={() =>
           setMessages([
