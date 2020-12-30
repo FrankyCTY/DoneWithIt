@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
@@ -22,7 +22,8 @@ const initMessages = [
   {
     id: 3,
     title: "T3",
-    description: "D3",
+    description:
+      "export default function export default function MessagesScreen() {export default function MessagesScreen() {export default function MessagesScreen() {export default function MessagesScreen() {() {",
     image: require("../assets/chair.jpg"),
   },
 ];
@@ -39,7 +40,7 @@ export default function MessagesScreen() {
   };
 
   return (
-    <Screen>
+    <Screen otherStyles={styles.container}>
       <FlatList
         data={messages}
         keyExtractor={(message) => message.id.toString()}
@@ -49,6 +50,7 @@ export default function MessagesScreen() {
             subtitle={item.description}
             image={item.image}
             onPress={() => console.log("Message selected", item)}
+            showChevrons
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDeleteMsg(item)} />
             )}
@@ -70,3 +72,9 @@ export default function MessagesScreen() {
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
