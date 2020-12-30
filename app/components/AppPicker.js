@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TouchableWithoutFeedback,
   Modal,
@@ -36,10 +35,11 @@ export default function AppPicker({
               style={styles.icon}
             />
           )}
-
-          <AppText otherStyles={styles.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          {selectedItem ? (
+            <AppText otherStyles={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText otherStyles={styles.placeholder}>{placeholder}</AppText>
+          )}
 
           <MaterialCommunityIcons
             name="chevron-down"
@@ -84,6 +84,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   text: {
+    flex: 1,
+  },
+  placeholder: {
+    color: colors.medium,
     flex: 1,
   },
 });

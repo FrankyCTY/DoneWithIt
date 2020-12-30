@@ -12,6 +12,7 @@ export default function ListItem({
   subtitle,
   onPress,
   renderRightActions,
+  showChevrons = false,
 }) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
